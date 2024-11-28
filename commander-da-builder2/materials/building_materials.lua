@@ -3,6 +3,7 @@
 multiplierBracingCost = 0.5
 multiplierBuiltTime = 0.5
 multiplierBuiltTimeActive = 0.25
+multiplierBracingHitPoints = 2
 
 function UpdateMaterial(material)
 	material.MetalBuildCost = material.MetalBuildCost*multiplierBracingCost
@@ -10,17 +11,25 @@ function UpdateMaterial(material)
 	material.MetalReclaim = material.MetalReclaim*multiplierBracingCost
 	material.EnergyBuildCost = material.EnergyBuildCost*multiplierBracingCost
 	material.EnergyRepairCost = material.EnergyRepairCost*multiplierBracingCost
-	material.Mass = 0.09
-	material.HitPoints = 250
+	material.HitPoints = material.HitPoints*multiplierBracingHitPoints
 	material.CommanderReceiveDamageMultiplier = 0.5 -- receive reduced charge when our material is damaged by the enemy
 end
 
 CommanderApplyModBase = function()
-	bracing = FindMaterial("bracing")
-	UpdateMaterial(bracing)
+	armour = FindMaterial("armour")
+	UpdateMaterial(armour)
+	
+	door = FindMaterial("door")
+	UpdateMaterial(door)
+	
+	shield = FindMaterial("shield")
+	UpdateMaterial(shield)
 
 	bracingbg = FindMaterial("backbracing")
 	UpdateMaterial(bracingbg)
+	
+	bracing = FindMaterial("bracing")
+	UpdateMaterial(bracing)
 
 	for k, material in ipairs(Materials) do
 		if active then
