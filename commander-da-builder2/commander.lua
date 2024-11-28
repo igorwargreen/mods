@@ -1,7 +1,7 @@
 dofile("scripts/forts.lua")
 
 Faction = "Asia"
-StringGroup = "Architect"
+StringGroup = "Murat"
 
 DescPassive =
 {
